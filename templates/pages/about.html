@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}About Me{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<section class="about-container center-column">
+    <div class="about-image-container center-column">
+        <h2>About Me</h2>
+        <img src="{% static './img/joe.jpg' %}">
+    </div>
+
+    <div class="about-description-container center-column">
+        <h2>Hello, My name is Smokin Joe</h2>
+
+        <p>Being raised in Florida with deep roots, I've spent my life immersed in the Sunshine State's vibrant culture and stunning landscapes. From humble beginnings in Southwest Florida, I've embraced a spirit of entrepreneurship, exploring various ventures from agriculture to retail.</p>
+
+        <p>With a heart for my community, I've dedicated myself to advocating for children and preserving Florida's unique heritage. As the host of the Cracker Culture Podcast on Smokin Joe Nation YouTube, I share stories, insights, and a passion for all things Florida. Join me as we celebrate the spirit of the Sunshine State!</p>
+            
+        <p><a href="https://www.youtube.com/@smokinjoenation8938"><b>Subscribe to the Cracker Culture Podcast</b></a> and let's connect on the journey of discovering Florida's true essence.</p>
+    </div>
+</section>
+
+{% endblock content %}

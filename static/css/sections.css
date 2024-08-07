@@ -1,0 +1,96 @@
+/*HOME PAGE*/
+.home-container {
+    background-image: url(../img/floridastateflag.jpg);
+    background-size: cover;
+}
+
+.home-container h1 {
+    font-size: xx-large;
+    margin-top: 16.80rem;
+    margin-bottom: 1.5rem;
+}
+
+.home-description-container {
+    width: 70%;
+    padding: 2%;
+    margin-bottom: 18.35rem;
+}
+
+.home-description-container p {
+    margin: 1rem 0px;
+    width: 80%;
+}
+
+/*ABOUT ME PAGE*/
+.about-container {
+    background-color: var(--secondary-color-800);
+}
+
+.about-image-container {
+    width: 75%;
+}
+
+.about-image-container img {
+    width: 35%;
+}
+
+.about-description-container {
+    width: 70%;
+    padding: 2%;
+}
+
+.about-description-container p {
+    color: var(--primary-color);
+    margin: 2rem 0px;
+    width: 80%;
+}
+
+/*PODCAST SECTION */
+.podcast-container {
+    padding: 0.65rem;
+}
+.podcast-cards{
+    margin: 1rem;
+    width: 35rem;
+}
+
+.podcast-cards:hover {
+    opacity: 0.6;
+/*    border: 0.5rem solid var(--surface-color); */
+}
+
+.podcast-cards img{
+    width: 95%;
+    padding: 2%;
+}
+
+.podcast-cards p {
+    margin-top: 0.3rem;
+}
+
+/* Contact Page */
+.contact-section{
+    background-color: var(--secondary-color-800);
+}
+
+.contact-section h2 {
+    flex-direction: column;
+}
+
+.contact-section #emailForm {
+    border: solid 1px var(--primary-color-100);
+    border-radius: 4px;
+    padding: 1rem 2.5rem 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.contact-section input,
+.contact-section textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.contact-section p {
+    margin-bottom: 1rem;
+}

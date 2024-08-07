@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Podcasts{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<section class="podcast-section">
+    <h2>Podcasts</h2>
+
+    <div class="podcast-container">
+        
+        {% for podcast in podcasts %}
+        <div class="podcast-cards">
+            <img src="{{ podcast.image.url }}">
+            <a href="{{ podcast.link }}" target="_blank">
+                <p>{{ podcast.title }}</p>
+            </a>
+            <p>{{ podcast.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}

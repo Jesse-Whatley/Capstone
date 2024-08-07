@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<div class="home-container center-column">
+<h1>Our Mission</h1>
+<div class="home-description-container center-column">
+    <p>Empowered by transparency and driven by justice, our mission is to combat corruption in all its forms, promoting accountability and integrity in governance, business, and society.</p>
+
+    <p>We strive to educate, mobilize and advocate for a culture of honesty and fair play, where the rights and dignity of all indivduals are respected and protected.</p>
+
+    <button class="btn btn-primary">
+        <a href="{% url 'register' %}">Sign Up Here</a>
+    </button>
+</div>
+
+</div>
+
+{% endblock content %}

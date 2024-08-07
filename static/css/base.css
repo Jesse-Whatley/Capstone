@@ -1,0 +1,75 @@
+:root {
+    --primary-color: #039659;
+    --primary-color-100: #CDFEEA;
+    --primary-color-400: #37FBA9;
+
+    --secondary-color: #3333FF;
+    --secondary-color-600: #0000CC;
+    --secondary-color-800: #000066;
+
+    --neutral-color: #E0E0E0;
+
+/*    --background-color: #1B1B1B;
+
+    --surface-color: #252525; */
+}
+
+.center-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+html {
+    background-color: var(--background-color);
+    font-size: 16px;
+}
+
+* {
+    font-family: var(--DM-font);
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* REM- Relative to the root font size (HTML).
+PX- Absolute*/
+
+h1 {
+/*    color: var(--secondary-color-600); */
+    text-transform: uppercase;
+    font-size: 1rem;/* 1rem * 16px = 16px*/
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    letter-spacing: 0.06rem;
+}
+
+p {
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.primary-button {
+        font-weight: bold;
+        border-radius: 1rem;
+        border: none;
+        padding: 2.5% 5%;
+        color: var(--neutral-color);
+        background: var(--primary-color-400); 
+}
+.primary-button:hover {
+    background: linear-gradient(135deg, #075f1d 0%, #168858 100%);
+}
