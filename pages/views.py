@@ -14,11 +14,16 @@ def contact_view(request):
         form = ContactForm(request.POST)
         
         if form.is_valid():
-            name = form.cleaned_data['name']
-            email_from = cleaned_data['email']
-            message = form.cleaned_data['message']
+            name = form.cleaned_data["name"]
+            email_from = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
             
-            send_mail("Email from" + name, message, email_from, [''])
+            send_mail(
+                "Email from" + name,            # subject
+                message,                        # content
+                email_from,                     # from
+                ["smokinjoenation@gmail.com"]   # to
+            )
             
             return redirect('home')
         

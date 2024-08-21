@@ -1,30 +1,35 @@
 from django.db import models
 import datetime
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+
 class Category(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=255)
     
     def __str__(self):
         return self.name
-
+    
+    # Change name in app (Admin)
+    class Meta:
+        verbose_name_plural = "Categories"
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(default=0, decimal_places=2, max_digits=6)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    description = models.CharField(max_length=250, default='', blank=True, null=True)
-    image = models.ImageField(upload_to='products')
+    name = models.CharField(max_length=255)
+    description = models.TextField(max_length=1000)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    liked_by = models.ManyToManyField(get_user_model(), related_name='liked_products', blank=True)
     
     def __str__(self):
         return self.name
 
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-#    customer = models.ForeignKey(Customer, ) 
     quantity = models.IntegerField(default=1)
-    address = models.CharField(max_length=100, default='', blank=False)
-    phone = models.CharField(max_length=10, default='', blank=False)
+    address = models.CharField(max_length=100, default='', blank=True)
+    phone = models.CharField(max_length=20, default='', blank=True)
     date = models.DateField(default=datetime.datetime.today)
     status = models.BooleanField(default=False)
     

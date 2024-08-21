@@ -5,8 +5,12 @@ from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView
 from django.contrib.auth import logout
 from django.urls import reverse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .forms import UserRegisterForm
+from .models import Profile
+from django.views import View
+from django.views.generic.detail import DetailView
+from django.contrib.auth.models import User
 
 # Create your views here.
 class UserLoginView (LoginView):
@@ -23,6 +27,12 @@ class UserRegisterView(CreateView):
         user = form.save(commit=False)
         passw = form.cleaned_data["password"]
         user.set_password(passw) # hash/encript the password
+        
+        user.save()
+        
+        Profile.objects.create(user=user)
+        
+        return super().form_valid(form)
     
     def get_success_url(self):
         return reverse('login')
@@ -30,3 +40,39 @@ class UserRegisterView(CreateView):
 def user_logout_view(request):
     logout(request)
     return redirect('login')
+
+
+### Profile view ### 
+class UserProfileEditView(View):
+    template_name = "users/edit_profile.html"
+    
+    
+    
+    def get(self, request):
+        return render(request, self.template_name, {'user': request.user})
+    
+    def post(self, request):
+        profile = request.user.profile
+        profile.phone_number = request.POST.get('phone_number')
+        profile.street = request.POST.get('street')
+        profile.city = request.POST.get('city')
+        profile.state = request.POST.get('state')
+        profile.zip_code = request.POST.get('zip_code')
+        profile.country = request.POST.get('country')
+        
+        if 'avatar' in request.FILES:
+            profile.avatar = request.FILES['avatar']
+            
+        profile.save()
+        return redirect('profile')
+    
+
+class UserProfileView(DetailView):
+    models = User
+    template_name = "users/profile.html"
+    context_object_name = "user"
+    pk_url_kwarg = "user_id"
+    
+    def get_object(self):
+        user_id = self.kwargs.get('user_id')
+        return get_object_or_404(User, id=user_id)

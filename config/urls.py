@@ -29,6 +29,8 @@ urlpatterns = [
     path('contact/', contact_view, name="contact"),
     path('podcast/', podcast_list_view, name="podcast_list"),
     path('users/', include('users.urls')),
+    path('store/', include('store.urls')),
+    path('cart/', include('cart.urls')),
 ]
 
 

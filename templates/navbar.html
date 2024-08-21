@@ -1,38 +1,44 @@
-
-
-<nav class="navbar navbar-expand-lg">
-
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Smokin Joe Nation</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
         </button>
+    <div class="navbar-collapse collapse show" id="navbarColor02" style="">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+            <a class="nav-link active" href="{% url 'home' %}">Home
+                <span class="visually-hidden"></span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About Me</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'podcast_list' %}">Podcast</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'product_list' %}">Shop</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}"></a>
+            </li>
+        </ul>
+        <form class="d-flex">
+            <input class="form-control me-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
         
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'podcast_list' %}">Podcast</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
-                </li>
-            </ul>
-
-            <div>
-                {% if user.is_authenticated %}
-                    <label>{{ user.username }}</label>
-                    <a href="{% url 'logout' %}" class="btn btn-outline-dark">Log Out</a>
-                {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-dark">Log In</a>
-                {% endif %}
-            </div>
+        <div>
+            {% if user.is_authenticated %}
+            <label>{{ user.username }}</label>
+            <a href="{% url 'edit_profile' %}" class="btn btn-outline-success"></a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-success">Log Out</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-success">Log In</a>
+            {% endif %}
         </div>
     </div>
+</div>
 </nav>

@@ -14,7 +14,11 @@ import certifi
 import environ
 from pathlib import Path
 
+os.environ["SSL_CERT_FILE"] = certifi.where()
 
+#load environment vars
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,11 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cart',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'pages',
     'podcast',
     'store',
     'users',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS='bootstrap5'
+CRISPY_TEMPLATE_PACK='bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,3 +150,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+# Email conf
+EMAIL_BACK = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+EMAIL_HOST_USER = env('SMTP_USER')
+EMAIL_HOST_PASSWORD = env('SMTP_PASS')
