@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-{% load cart_filters %}
-{% load utility_filters %}
 {% load static %}
 
 {% block css %}
@@ -27,7 +25,7 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ quantity }}</td>
-                <td>{{ product.price|multipy:quantity }}</td>
+                <td>{{ product.total }}</td>
                 <td>
                     <form method="post" action="{% url 'remove_from_cart' product.id %}">
                         {% csrf_token %}

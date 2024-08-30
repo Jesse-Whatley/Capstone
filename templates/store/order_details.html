@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Order{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+<div class="contact-section center-column">
+    
+    <form id="orderForm" action="." method="post" class="center-column">
+        {% csrf_token %}
+        <h2>Create Order</h2>
+        <p>Almost ready!</p>
+
+        {{ form.name }}
+        {{ form.email }}
+        {{ form.phone }}
+        {{ form.street }}
+        {{ form.street_2 }}
+        {{ form.city }}
+        {{ form.state }}
+        {{ form.zip_code }}
+
+        <button class="primary-button">Pay with PayPal</button>
+    </form>
+</div>
+
+{% endblock content %}

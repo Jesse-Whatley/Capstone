@@ -64,7 +64,7 @@ class UserProfileEditView(View):
             profile.avatar = request.FILES['avatar']
             
         profile.save()
-        return redirect('profile')
+        return redirect('profile', user_id=request.user.id)
     
 
 class UserProfileView(DetailView):

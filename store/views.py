@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import OrderForm
 # Create your views here.
 
 def set_liked_by_user(products, user):
@@ -19,6 +20,11 @@ def set_liked_by_user(products, user):
             product.liked = False
     return products
 
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'categories'
+
 class ProductListView(ListView):
     model = Product
     template_name = 'product_list.html'
@@ -27,7 +33,7 @@ class ProductListView(ListView):
         queryset = super().get_queryset()
         category_name = self.kwargs.get('category', None)
         if category_name:
-            category = get_list_or_404(Category, name=category_name)
+            category = get_object_or_404(Category, name=category_name)
             queryset = queryset.filter(category=category)
         return queryset
     
@@ -64,3 +70,36 @@ class LikeProductView(View, LoginRequiredMixin):
             return_url = reverse('product_list')
         
         return HttpResponseRedirect(return_url)
+    
+    
+    
+
+def order_view(request):
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            phone = form.cleaned_data["phone"]
+            street = form.cleaned_data["street"]
+            street_2 = form.cleaned_data["street_2"]
+            city = form.cleaned_data["city"]
+            state = form.cleaned_data["state"]
+            zip_code = form.cleaned_data["zip_code"]
+            delivery_instructions = form.cleaned_data["delivery_instructions"]
+            
+            
+            
+            # Save a new Order record using Order model
+            
+            # Call PayPal API
+            
+            
+            return redirect('order_details')
+        
+        else:
+            print("invalid form")
+    else:
+        form = OrderForm()
+    return render(request, 'store/order_details.html', {'form': form})

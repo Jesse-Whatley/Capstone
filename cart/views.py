@@ -10,7 +10,7 @@ from django.shortcuts import redirect, render
 
 # Create your views here.
 class CartListView(ListView, LoginRequiredMixin):
-    template_name = 'cart_detail.html'
+    template_name = 'cart/cart_detail.html'
     
     def get(self, request, *args, **kwargs):
         cart = request.session.get('cart', {})
@@ -19,9 +19,12 @@ class CartListView(ListView, LoginRequiredMixin):
         # Fetch actual Product objects based on their IDs
         for product_id, quantity in cart.items():
             product = Product.objects.get(pk=product_id)
+            product.total = product.price * quantity
             cart_items[product] = quantity
+            print(cart_items)
+            
         
-        return render(request, 'cart_detai.html', {'cart': cart_items})
+        return render(request, 'cart/cart_detail.html', {'cart': cart_items})
     
     def get_queryset(self):
         return self.request.session.get('cart', [])

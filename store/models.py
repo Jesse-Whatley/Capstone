@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/categories/', null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -26,10 +27,17 @@ class Product(models.Model):
         return self.name
 
 class Order(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    address = models.CharField(max_length=100, default='', blank=True)
+    name = models.CharField(max_length=255, blank=True)
+    email = models.CharField(max_length=255, blank=True)
+    street = models.CharField(max_length=200, blank=True)
+    street_2 = models.CharField(max_length=200, blank=True)
+    city = models.CharField(max_length=200, blank=True)
+    state = models.CharField(max_length=24, blank=True)
+    zip_code = models.CharField(max_length=10, blank=True)
     phone = models.CharField(max_length=20, default='', blank=True)
+    delivery_instructions = models.TextField(max_length=1000, blank=True)
+    
+    # auto fields
     date = models.DateField(default=datetime.datetime.today)
     status = models.BooleanField(default=False)
     

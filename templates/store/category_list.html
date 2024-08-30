@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-8">
+    <a class="row">
+        {% for category in categories %}
+        <a href="{% url 'product_list_by_category' category=category %}" class="row">
+            <div class="card">
+                <img src="{{category.image.url}}" class="card-img-top" alt="{{ category.name }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ category.name }}</h5>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </a>
+</div>
+{% endblock %}

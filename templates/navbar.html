@@ -18,7 +18,7 @@
             <a class="nav-link" href="{% url 'podcast_list' %}">Podcast</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'product_list' %}">Shop</a>
+            <a class="nav-link" href="{% url 'categories' %}">Shop</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="{% url 'contact' %}"></a>
@@ -33,12 +33,12 @@
         <div>
             {% if user.is_authenticated %}
             <label>{{ user.username }}</label>
-            <a href="{% url 'edit_profile' %}" class="btn btn-outline-success"></a>
+            <a href="{% url 'edit_profile' %}" class="btn btn-outline-success">Profile</a>
             <a href="{% url 'logout' %}" class="btn btn-outline-success">Log Out</a>
             {% else %}
             <a href="{% url 'login' %}" class="btn btn-outline-success">Log In</a>
             {% endif %}
         </div>
     </div>
-</div>
+    </div>
 </nav>
