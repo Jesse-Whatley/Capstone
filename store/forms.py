@@ -9,3 +9,4 @@ class OrderForm(forms.Form):
     state = forms.CharField(max_length=24, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone = forms.CharField(max_length=20, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
+    delivery_instructions= forms.CharField(max_length=1000, widget=forms.Textarea(attrs={'placeholder': 'Delivery Instructions'}))

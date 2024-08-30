@@ -1,0 +1,51 @@
+/* Nav Responsive Design */
+@media(max-width:640px) {
+    /*Styles*/
+    html {
+        font-size: 10px;
+    }
+
+    .about-section {
+        flex-direction: column;
+        padding: 2%;
+    }
+
+    .about-image-container {
+        width: 100%;
+        margin: 4rem 0px;
+    }
+
+    .about-image-container img {
+        width: 70%;
+    }
+
+    .about-description-container {
+        width: 100%;
+    }
+}
+
+
+/* Sections Responsive Design */
+@media(max-width:1007px){
+    html {
+        font-size: 18px;
+    }
+
+    .about-section {
+        flex-direction: column;
+        padding: 4%;
+    }
+
+    .about-image-container {
+        width: 100%;
+        margin: 2rem 0px;
+    }
+
+    .about-image-container img {
+        width: 70%;
+    }
+
+    .about-description-container {
+        width: 100%;
+    }
+}

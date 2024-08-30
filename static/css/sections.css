@@ -23,7 +23,7 @@
 
 /*ABOUT ME PAGE*/
 .about-container {
-    background-color: var(--secondary-color-800);
+    background-color: var(--secondary-color-900);
 }
 
 .about-image-container {
@@ -40,9 +40,10 @@
 }
 
 .about-description-container p {
-    color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.5);
     margin: 2rem 0px;
     width: 80%;
+    word-wrap: normal;
 }
 
 /*PODCAST SECTION */
@@ -56,7 +57,7 @@
 
 .podcast-cards:hover {
     opacity: 0.6;
-/*    border: 0.5rem solid var(--surface-color); */
+    border: 0.5rem solid var(--surface-color); 
 }
 
 .podcast-cards img{
@@ -70,7 +71,7 @@
 
 /* Contact Page */
 .contact-section{
-    background-color: var(--secondary-color-800);
+    background-color: var(--secondary-color-900);
 }
 
 .contact-section h2 {

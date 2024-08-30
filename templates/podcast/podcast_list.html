@@ -5,15 +5,15 @@
 
 {% block content %}
 
-<section class="container podcast-section">
+<section class="container center-column podcast-section">
     <h2>Podcasts</h2>
 
     <div class="podcast-container">
         
         {% for podcast in podcasts %}
         <div class="podcast-cards">
-            <img src="{{ podcast.image.url }}">
             <a href="{{ podcast.link }}" target="_blank">
+                <img src="{{ podcast.image.url }}">
                 <p>{{ podcast.title }}</p>
             </a>
             <p>{{ podcast.description }}</p>

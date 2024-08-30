@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="contact-section center-column">
+<div class="container center-column">
     
     <form id="orderForm" action="." method="post" class="center-column">
         {% csrf_token %}
@@ -20,8 +20,9 @@
         {{ form.city }}
         {{ form.state }}
         {{ form.zip_code }}
+        {{ form.delivery_instructions }}
 
-        <button class="primary-button">Pay with PayPal</button>
+        <button class="btn btn-outline-success">Pay with PayPal</button>
     </form>
 </div>
 
