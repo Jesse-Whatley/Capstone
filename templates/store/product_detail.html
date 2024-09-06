@@ -8,15 +8,15 @@
 {% block title %}Products{% endblock title %}
 
 {% block content %}
-<div class="product-detail-container">
-    <div class="product-img-container">
-        <div class="product-img">
+<div class="card row mx-3 border border-secondary p-2 mb-3 border-1 border-opacity-25" style="padding: 1.5rem;">
+    <div class="col" style="padding-top: 5rem; padding-bottom: 5rem;">
+        <div>
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
         </div>
     </div>
 
-    <div class="product-detail-container">
-        {% include '_like_button.html' %}
+    <div>
+        {% include './_like_button.html' %}
         <h2>{{ product.name }}</h2>
         <p class="text-muted">Category:
             <a href="{% url 'product_list_by_category' product.category.name %}">

@@ -3,10 +3,10 @@
 
 {% block content %}
 <div class="container mt-8">
-    <a class="row">
+    <div class="row" style="padding-top: 5rem; padding-bottom: 5rem;">
         {% for category in categories %}
-        <a href="{% url 'product_list_by_category' category=category %}" class="row">
-            <div class="card">
+        <a href="{% url 'product_list_by_category' category=category %}" class="col">
+            <div class="card col mx-3 border border-secondary p-2 mb-3 border-1 border-opacity-25" style="padding: 1.5rem;">
                 <img src="{{category.image.url}}" class="card-img-top" alt="{{ category.name }}">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ category.name }}</h5>
@@ -14,6 +14,6 @@
             </div>
         </a>
         {% endfor %}
-    </a>
+    </div>
 </div>
 {% endblock %}

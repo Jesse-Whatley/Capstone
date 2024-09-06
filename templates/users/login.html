@@ -11,11 +11,15 @@
             {% csrf_token %}
             {{ form.as_p}}
 
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-secondary">Login</button>
 
             <hr>
             <label>Do you need an account?</label>
             <a href="{% url 'register' %}">Sign Up Here!</a>
+
+            <br>
+            <label>Did you forget your password?</label>
+            <a href="{% url 'password_reset' %}">Reset Password Here!</a>
         </form>
     </div>
 {% endblock content %}

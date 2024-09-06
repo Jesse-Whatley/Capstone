@@ -19,7 +19,7 @@
                 <div class="card product-card">
                     <a href="{% url 'product_detail' product.id %}">
                         <div class="product-image-container">
-                            <img src="{{ product.image.url }}" class="card-img-top product-image" alt="{{ product.name }}">
+                            <img src="{{ product.image.url }}" height="350" class="card-img-top product-image" alt="{{ product.name }}">
                             <div class="like-button">
                                 {% include './_like_button.html' %}
                             </div>
@@ -27,6 +27,7 @@
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
+                        <p>{{ product.description }}</p>
                         <p class="card-text"><a href="{% url 'product_list_by_category' product.category.name %}">
                                 {{ product.category.name }}
                             </a>
@@ -41,8 +42,8 @@
                         </div>
                     </div>
                 </div>
-            {% endfor %}
             </div>
+            {% endfor %}            
         </div>
     </div>
 </div>

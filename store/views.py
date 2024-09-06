@@ -22,7 +22,7 @@ def set_liked_by_user(products, user):
 
 class CategoryListView(ListView):
     model = Category
-    template_name = 'category_list.html'
+    template_name = 'store/category_list.html'
     context_object_name = 'categories'
 
 class ProductListView(ListView):
@@ -40,16 +40,18 @@ class ProductListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         products = list(context['object_list'])
+        set_liked_by_user(products, self.request.user)
         context['object_list'] = products
         context['categories'] = Category.objects.all()
         return context
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'product_detail.html'
+    template_name = 'store/product_detail.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        set_liked_by_user(context['object'], self.request.user)
         
         return context
 
@@ -64,11 +66,8 @@ class LikeProductView(View, LoginRequiredMixin):
         else:
             product.liked_by.add(request.user)
         
-        referer_url = request.META.get('HTTP_REFER', reverse('product_list'))
-        return_url = reverse('product_detail', args=[product_id])
-        if return_url not in referer_url:
-            return_url = reverse('product_list')
-        
+    
+        return_url = reverse('product_detail', args=[product_id])    
         return HttpResponseRedirect(return_url)
     
     

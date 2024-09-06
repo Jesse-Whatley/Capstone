@@ -61,15 +61,3 @@ p {
     line-height: 1.5rem;
     font-size: 1.1rem;
 }
-
-.primary-button {
-        font-weight: bold;
-        border-radius: 1rem;
-        border: none;
-        padding: 2.5% 5%;
-        color: var(--neutral-color);
-        background: var(--primary-color-400); 
-}
-.primary-button:hover {
-    background: linear-gradient(135deg, #075f1d 0%, #168858 100%);
-}

@@ -1,9 +1,4 @@
 /*HOME PAGE*/
-.home-container {
-    background-image: url(../img/floridastateflag.jpg);
-    background-size: cover;
-}
-
 .home-container h1 {
     font-size: xx-large;
     margin-top: 16.80rem;
@@ -68,6 +63,7 @@
 .podcast-cards p {
     margin-top: 0.3rem;
 }
+
 
 /* Contact Page */
 .contact-section{
