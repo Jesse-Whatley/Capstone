@@ -18,6 +18,8 @@ def contact_view(request):
             email_from = form.cleaned_data["email"]
             message = form.cleaned_data["message"]
             
+            print("Sending email now")
+            
             send_mail(
                 "Email from" + name,            # subject
                 message,                        # content
